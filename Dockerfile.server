@@ -1,0 +1,17 @@
+# Use an official lightweight Python image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy server.py and key.py (if any)
+COPY server.py key.py /app/
+
+# Copy requirements if additional dependencies exist
+RUN echo "confluent-kafka\npymongo" > requirements.txt
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Set the command to run the server script
+CMD ["python", "server.py"]
