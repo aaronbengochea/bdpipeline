@@ -20,8 +20,19 @@ from key import MONGO_URI
 # Kafka Configuration
 # working with localhost, having issues with docker -> use kafka:9092
 
-KAFKA_BROKER = 'localhost:9092'  # Update this if Kafka is running elsewhere
-TOPIC = 'news'
+# Notes:
+# 1) There is a networking issue happening in the way kafka is referenced, it may have to do with the
+#       ports/listeners/activeListeners configs, keep working on that
+# 2) Everything works as expected when the server is removed from the docker-compose image, if it uses localhost
+#       it can connect, same as the producer1 script
+# 3) This current implementation of the docker-compose file lets kafka startup uninterrupted but does not create 
+#       the news topic automatically, having issues with the init bootstrapServer settings, works if exec external
+
+# todo:
+# 1) further debugging of connection issue stated above
+# 2) add the two other producer scripts
+# 3) add the query params and api endpoints for data gathering (easy)
+
 
 # MongoDB Configuration
 DB_NAME = 'bigdata'
@@ -31,6 +42,10 @@ COLLECTION_NAME = 'project'
 mongo_client = MongoClient(MONGO_URI)
 db = mongo_client[DB_NAME]
 collection = db[COLLECTION_NAME]
+
+
+KAFKA_BROKER = 'localhost:9092'  # Update this if Kafka is running elsewhere
+TOPIC = 'news'
 
 # Create Kafka Consumer
 consumer_config = {
