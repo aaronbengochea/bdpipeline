@@ -20,7 +20,7 @@ from key import MONGO_URI
 # Kafka Configuration
 # working with localhost, having issues with docker -> use kafka:9092
 
-KAFKA_BROKER = 'kafka:9092'  # Update this if Kafka is running elsewhere
+KAFKA_BROKER = 'localhost:9092'  # Update this if Kafka is running elsewhere
 TOPIC = 'news'
 
 # MongoDB Configuration
