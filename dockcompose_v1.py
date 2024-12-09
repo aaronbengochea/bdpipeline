@@ -1,4 +1,4 @@
-
+"""
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -43,15 +43,15 @@ services:
       - app-network
 
 
-  #server-py:
-  #  build: 
-  #   dockerfile: Dockerfile.server
-  #  container_name: server-py
-  #  depends_on:
-  #    - kafka
-  #    - mongodb
-  #  networks: 
-  #   - app-network
+  server-py:
+    build: 
+      dockerfile: Dockerfile.server
+    container_name: server-py
+    depends_on:
+      - kafka
+      - mongodb
+    networks: 
+      - app-network
     
 
   mongodb:
@@ -69,7 +69,4 @@ networks:
 
 volumes:
   mongo-data:
-
-
-
-
+"""
