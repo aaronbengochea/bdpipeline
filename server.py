@@ -13,8 +13,13 @@ from key import MONGO_URI
   #    - kafka
   #    - mongodb
 
+# Create a topic in docker
+# docker exec -it kafka kafka-topics --create --topic news --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+
 # Kafka Configuration
 # working with localhost, having issues with docker -> use kafka:9092
+
 KAFKA_BROKER = 'kafka:9092'  # Update this if Kafka is running elsewhere
 TOPIC = 'news'
 
